@@ -1,10 +1,9 @@
 import { ErrorResponce, GetConnectionsResponse } from './../types/monero';
 import { GetInfoResponse, ResultResponce } from '../types/monero';
-import { server } from '../utils';
 
 export class MoneroApi {
   private _send = (method: string): Promise<Response> => {
-    return fetch(`${server}/json_rpc`, { method: 'POST', body: JSON.stringify({ jsonrpc: '2.0', id: '0', method }) });
+    return fetch(`/json_rpc`, { method: 'POST', body: JSON.stringify({ jsonrpc: '2.0', id: '0', method }) });
   };
 
   public getInfo = async (): Promise<ResultResponce<GetInfoResponse> | ErrorResponce> => {

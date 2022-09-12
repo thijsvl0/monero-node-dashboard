@@ -1,20 +1,3 @@
-# Monero Node Dashboard
-
-![Screenshot](https://raw.githubusercontent.com/brechtdoran/monero-node-dashboard/main/assets/screenshot.png)
-
-Monero Node Dashboard is a simple dashboard for your local Monero node.
-
-## Installing with Docker
-
-To start up the Monero Node Dashboard, simply run:
-
-```bash
-docker compose up
-```
-
-This will run the example `docker-compose.yml` file, which will use [sethforprivacy/simple-monerod-docker](https://github.com/sethforprivacy/simple-monerod-docker) to spin up a local Monero Node.
-
-```
 version: '3'
 
 services:
@@ -53,4 +36,3 @@ volumes:
 networks:
   monero_net:
     driver: bridge
-```

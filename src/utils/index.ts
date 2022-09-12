@@ -9,7 +9,3 @@ export const formatBytes = (bytes: number, decimals = 2) => {
 
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 };
-
-const dev = process.env.NODE_ENV !== 'production';
-
-export const server = dev ? 'http://localhost:3000' : process.env.SITE_URL;
