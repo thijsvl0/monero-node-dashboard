@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import useMoneroStore from '../stores/monero';
 import Container from './Container';
 import Logo from './Logo';
+import ThemeToggle from './ThemeToggle';
 
 interface NavbarProps {}
 
@@ -9,11 +10,13 @@ const Navbar: FC<NavbarProps> = ({}) => {
   const { data: info, isLoading } = useMoneroStore((state) => state.info);
 
   return (
-    <nav className="border-t-8 border-primary bg-white shadow">
+    <nav className="border-t-8 border-primary bg-white shadow dark:bg-gray-900">
       <Container>
         <div className="flex h-20 items-center justify-between">
           <Logo />
-          {isLoading ? <div className="text-slate-400">Connecting...</div> : info ? <div className="font-semibold text-primary">Connected</div> : <div className="text-slate-300">Not Connected</div>}
+          <div className="flex items-center gap-x-4">
+            {isLoading ? <div className="text-slate-400 dark:text-slate-300">Connecting...</div> : info ? <div className="font-semibold text-primary">Connected</div> : <div className="text-slate-300 dark:text-slate-500">Not Connected</div>} <ThemeToggle />
+          </div>
         </div>
       </Container>
     </nav>

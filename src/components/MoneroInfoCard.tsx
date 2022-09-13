@@ -10,17 +10,17 @@ const MoneroInfoCard: FC<MoneroInfoCardProps> = () => {
   return (
     <div>
       <div className="pb-4">
-        <h2 className="text-md font-medium text-slate-800">Monero info</h2>
+        <h2 className="text-md font-medium text-slate-800 dark:text-white">Monero info</h2>
       </div>
       <Card>
         <div className="grid grid-cols-2 text-sm">
-          <span className="font-semibold text-slate-700">Difficulty</span> <span className="pl-1 text-slate-500">{info?.result?.difficulty}</span>
+          <span className="font-semibold text-slate-700 dark:text-white">Difficulty</span> <span className="pl-1 text-slate-500 dark:text-slate-400">{info?.result?.difficulty}</span>
         </div>
         <div className="grid grid-cols-2 text-sm">
-          <span className="font-semibold text-slate-700">Height</span> <span className="pl-1 text-slate-500">{info?.result?.height}</span>
+          <span className="font-semibold text-slate-700 dark:text-white">Height</span> <span className="pl-1 text-slate-500 dark:text-slate-400">{info?.result?.height}</span>
         </div>
         <div className="grid grid-cols-2 text-sm">
-          <span className="font-semibold text-slate-700">Target Height</span> <span className="pl-1 text-slate-500">{info?.result?.target_height}</span>
+          <span className="font-semibold text-slate-700 dark:text-white">Target Height</span> <span className="pl-1 text-slate-500 dark:text-slate-400">{info?.result?.target_height}</span>
         </div>
       </Card>
     </div>

@@ -29,36 +29,36 @@ const ConnectionsTable: FC<ConnectionsTableProps> = () => {
   };
 
   return (
-    <table className="min-w-full divide-y divide-slate-300">
-      <thead className="bg-slate-50">
+    <table className="min-w-full divide-y divide-slate-300 dark:divide-slate-500">
+      <thead className="bg-slate-50 dark:bg-gray-900">
         <tr>
-          <th className="select-none py-3.5 px-4 pl-6 text-left text-sm font-medium text-slate-700 hover:cursor-pointer" onClick={() => sortConnections('ip')}>
+          <th className="select-none py-3.5 px-4 pl-6 text-left text-sm font-medium text-slate-700 hover:cursor-pointer dark:text-white" onClick={() => sortConnections('ip')}>
             Address
             {getOrderIcon('ip')}
           </th>
-          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer sm:table-cell" onClick={() => sortConnections('incoming')}>
+          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer dark:text-white sm:table-cell" onClick={() => sortConnections('incoming')}>
             Direction
             {getOrderIcon('incoming')}
           </th>
-          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer md:table-cell" onClick={() => sortConnections('current_upload')}>
+          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer dark:text-white md:table-cell" onClick={() => sortConnections('current_upload')}>
             Upload
             {getOrderIcon('current_upload')}
           </th>
-          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer md:table-cell" onClick={() => sortConnections('current_download')}>
+          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer dark:text-white md:table-cell" onClick={() => sortConnections('current_download')}>
             Download
             {getOrderIcon('current_download')}
           </th>
-          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer md:table-cell" onClick={() => sortConnections('send_count')}>
+          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer dark:text-white md:table-cell" onClick={() => sortConnections('send_count')}>
             Sent
             {getOrderIcon('send_count')}
           </th>
-          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer md:table-cell" onClick={() => sortConnections('recv_count')}>
+          <th className="hidden select-none py-3.5 px-4 text-left text-sm font-medium text-slate-700 hover:cursor-pointer dark:text-white md:table-cell" onClick={() => sortConnections('recv_count')}>
             Received
             {getOrderIcon('recv_count')}
           </th>
         </tr>
       </thead>
-      <tbody className="divide-y divide-slate-200 bg-white">
+      <tbody className="divide-y divide-slate-200 bg-white dark:divide-slate-600 dark:bg-gray-900">
         {sortedConnections &&
           sortedConnections.map((connection) => (
             <tr key={connection.host}>
@@ -68,11 +68,11 @@ const ConnectionsTable: FC<ConnectionsTableProps> = () => {
                   <ArrowTopRightOnSquareIcon className="absolute -right-4 -top-1 w-3" />
                 </a>
               </td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 sm:table-cell">{connection.incoming ? 'Inboud' : 'Outbound'}</td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 md:table-cell">{formatBytes(connection.current_upload)}/s</td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 md:table-cell">{formatBytes(connection.current_download)}/s</td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 md:table-cell">{formatBytes(connection.send_count)}</td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 md:table-cell">{formatBytes(connection.recv_count)}</td>
+              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 sm:table-cell">{connection.incoming ? 'Inboud' : 'Outbound'}</td>
+              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 md:table-cell">{formatBytes(connection.current_upload)}/s</td>
+              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 md:table-cell">{formatBytes(connection.current_download)}/s</td>
+              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 md:table-cell">{formatBytes(connection.send_count)}</td>
+              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 md:table-cell">{formatBytes(connection.recv_count)}</td>
             </tr>
           ))}
       </tbody>
