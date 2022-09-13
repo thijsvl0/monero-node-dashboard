@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  dashboard:
+    image: node:16
+    command: bash -c "npm i && npm run dev"
+    working_dir: /app
+    volumes:
+      - .:/app
+    restart: unless-stopped
+    network_mode: service:node
+  node:
+    image: sethsimmons/simple-monerod
+    restart: unless-stopped
+    volumes:
+      - monero-chain-data:/home/monero/.bitmonero
+      - monero-wallet-data:/wallet
+    ports:
+      - 3000:3000
+    command:
+      - --no-igd
+      - --no-zmq
+      - --enable-dns-blocklist
+    networks:
+      - monero_net
+
+volumes:
+  monero-chain-data:
+  monero-wallet-data:
+
+networks:
+  monero_net:
+    driver: bridge
