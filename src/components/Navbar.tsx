@@ -1,8 +1,8 @@
-import type { FC } from 'react';
-import useMoneroStore from '../stores/monero';
 import Container from './Container';
+import type { FC } from 'react';
 import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
+import useMoneroStore from '../stores/monero';
 
 interface NavbarProps {}
 

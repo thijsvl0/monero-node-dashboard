@@ -1,15 +1,13 @@
-import { FC } from 'react';
-import {} from '../types/monero';
+import CardTitle from './CardTitle';
 import ConnectionsTable from './ConnectionsTable';
+import { FC } from 'react';
 
 interface ConnectionsCardProps {}
 
 const ConnectionsCard: FC<ConnectionsCardProps> = () => {
   return (
     <div className="col-span-full">
-      <div className="pb-4">
-        <h2 className="text-md font-medium text-slate-800">Active connections</h2>
-      </div>
+      <CardTitle>Active connections</CardTitle>
       <div className="overflow-hidden rounded-lg shadow-md ring-1 ring-black ring-opacity-5">
         <ConnectionsTable />
       </div>

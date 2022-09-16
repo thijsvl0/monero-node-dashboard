@@ -1,8 +1,11 @@
 import { ArrowTopRightOnSquareIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid';
 import { FC, useEffect, useMemo, useState } from 'react';
-import useMoneroStore from '../stores/monero';
+
 import { GetConnectionsConnection } from '../types/monero';
+import TableBody from './TableBody';
+import TableBodyColumn from './TableBodyColumn';
 import { formatBytes } from '../utils';
+import useMoneroStore from '../stores/monero';
 
 interface ConnectionsTableProps {}
 
@@ -58,7 +61,7 @@ const ConnectionsTable: FC<ConnectionsTableProps> = () => {
           </th>
         </tr>
       </thead>
-      <tbody className="divide-y divide-slate-200 bg-white dark:divide-slate-600 dark:bg-gray-900">
+      <TableBody>
         {sortedConnections &&
           sortedConnections.map((connection) => (
             <tr key={connection.host}>
@@ -68,14 +71,14 @@ const ConnectionsTable: FC<ConnectionsTableProps> = () => {
                   <ArrowTopRightOnSquareIcon className="absolute -right-4 -top-1 w-3" />
                 </a>
               </td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 sm:table-cell">{connection.incoming ? 'Inboud' : 'Outbound'}</td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 md:table-cell">{formatBytes(connection.current_upload)}/s</td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 md:table-cell">{formatBytes(connection.current_download)}/s</td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 md:table-cell">{formatBytes(connection.send_count)}</td>
-              <td className="hidden py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 md:table-cell">{formatBytes(connection.recv_count)}</td>
+              <TableBodyColumn>{connection.incoming ? 'Inboud' : 'Outbound'}</TableBodyColumn>
+              <TableBodyColumn>{formatBytes(connection.current_upload)}/s</TableBodyColumn>
+              <TableBodyColumn>{formatBytes(connection.current_download)}/s</TableBodyColumn>
+              <TableBodyColumn>{formatBytes(connection.send_count)}</TableBodyColumn>
+              <TableBodyColumn>{formatBytes(connection.recv_count)}</TableBodyColumn>
             </tr>
           ))}
-      </tbody>
+      </TableBody>
     </table>
   );
 };

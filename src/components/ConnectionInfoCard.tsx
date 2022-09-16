@@ -1,6 +1,8 @@
+import Card from './Card';
+import CardRow from './CardRow';
+import CardTitle from './CardTitle';
 import { FC } from 'react';
 import useMoneroStore from '../stores/monero';
-import Card from './Card';
 
 interface ConnectionInfoCardProps {}
 
@@ -9,19 +11,11 @@ const ConnectionInfoCard: FC<ConnectionInfoCardProps> = ({}) => {
 
   return (
     <div>
-      <div className="pb-4">
-        <h2 className="text-md font-medium text-slate-800 dark:text-white">Connection info</h2>
-      </div>
+      <CardTitle>Connection info</CardTitle>
       <Card>
-        <div className="grid grid-cols-2 text-sm">
-          <span className="font-semibold text-slate-700 dark:text-white">Incoming</span> <span className="pl-1 text-slate-500 dark:text-slate-400">{info?.result?.restricted ? <span className="text-slate-300 dark:text-slate-500">Restricted</span> : info?.result?.incoming_connections_count}</span>
-        </div>
-        <div className="grid grid-cols-2 text-sm">
-          <span className="font-semibold text-slate-700 dark:text-white">Outgoing</span> <span className="pl-1 text-slate-500 dark:text-slate-400">{info?.result?.restricted ? <span className="text-slate-300 dark:text-slate-500">Restricted</span> : info?.result?.outgoing_connections_count}</span>
-        </div>
-        <div className="grid grid-cols-2 text-sm">
-          <span className="font-semibold text-slate-700 dark:text-white">RPC</span> <span className="pl-1 text-slate-500 dark:text-slate-400">{info?.result?.restricted ? <span className="text-slate-300 dark:text-slate-500">Restricted</span> : info?.result?.rpc_connections_count}</span>
-        </div>
+        <CardRow label="Incoming">{info?.result?.restricted ? <span className="text-slate-300 dark:text-slate-500">Restricted</span> : info?.result?.incoming_connections_count}</CardRow>
+        <CardRow label="Outgoing">{info?.result?.restricted ? <span className="text-slate-300 dark:text-slate-500">Restricted</span> : info?.result?.outgoing_connections_count}</CardRow>
+        <CardRow label="RPC">{info?.result?.restricted ? <span className="text-slate-300 dark:text-slate-500">Restricted</span> : info?.result?.rpc_connections_count}</CardRow>
       </Card>
     </div>
   );
