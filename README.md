@@ -1,5 +1,7 @@
 # Monero Node Dashboard
 
+[![Docker Build](https://github.com/brechtdoran/monero-node-dashboard/actions/workflows/main.yml/badge.svg)](https://github.com/brechtdoran/monero-node-dashboard/actions/workflows/main.yml)
+
 ![Screenshot](https://raw.githubusercontent.com/brechtdoran/monero-node-dashboard/main/assets/screenshot.png)
 
 Monero Node Dashboard is a simple dashboard for your local Monero node.
