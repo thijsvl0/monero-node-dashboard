@@ -2,9 +2,7 @@ version: '3'
 
 services:
   dashboard:
-    build:
-      context: .
-      dockerfile: dockerfile
+    image: brechtdoran/monero-node-dashboard:latest
     restart: unless-stopped
     environment:
       - MONERO_HOST=localhost

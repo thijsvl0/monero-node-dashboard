@@ -6,6 +6,8 @@
 
 Monero Node Dashboard is a simple dashboard for your local Monero node.
 
+Restricted node [demo](https://monero-node-dashboard.vercel.app/).
+
 ## Installing with Docker
 
 To start up the Monero Node Dashboard, simply run:
@@ -21,16 +23,14 @@ version: '3'
 
 services:
   dashboard:
-    build:
-      context: .
-      dockerfile: dockerfile
+    image: brechtdoran/monero-node-dashboard:latest
     restart: unless-stopped
     environment:
       - MONERO_HOST=localhost
       - MONERO_PORT=18081
     network_mode: service:node
   node:
-    image: sethsimmons/simple-monerod
+    image: sethsimmons/simple-monerod:latest
     restart: unless-stopped
     volumes:
       - monero-chain-data:/home/monero/.bitmonero
