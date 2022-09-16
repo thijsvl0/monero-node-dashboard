@@ -1,6 +1,8 @@
 # Monero Node Dashboard
 
 [![Docker Build](https://github.com/brechtdoran/monero-node-dashboard/actions/workflows/main.yml/badge.svg)](https://github.com/brechtdoran/monero-node-dashboard/actions/workflows/main.yml)
+![Docker Pulls](https://img.shields.io/docker/pulls/brechtdoran/monero-node-dashboard)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/brechtdoran/monero-node-dashboard)
 
 ![Screenshot](https://raw.githubusercontent.com/brechtdoran/monero-node-dashboard/main/assets/screenshot.png)
 
