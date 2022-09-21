@@ -58,3 +58,13 @@ networks:
   monero_net:
     driver: bridge
 ```
+
+### Already have a Monero Node?
+
+The Monero Node Dashboard can both be connected to a open and restricted Monero Node. Most of (if not all) public nodes are restricted, because of security reasons.
+
+To make your own Monero Node open for the dashboard, you'll have to change some configurations on the node (See [Monero Node Docs](https://monerodocs.org/interacting/monerod-reference/) for reference).
+
+```
+rpc-bind-ip <Dashboard container IP>
+```
