@@ -58,3 +58,26 @@ networks:
   monero_net:
     driver: bridge
 ```
+
+### Already have a Monero Node?
+
+The Monero Node Dashboard can both be connected to a open and restricted Monero Node. Most of (if not all) public nodes are restricted, because of security reasons.
+
+To open up your own Monero Node to the dashboard, you'll have to make some configuration changes on the node (See [Monero Node Docs](https://monerodocs.org/interacting/monerod-reference/) for reference).
+
+**monerod.conf**
+
+```
+rpc-bind-ip=<dashboard IP>
+rpc-bind-port=18081
+confirm-external-bind=1
+```
+
+Proceed to open port 18081/TCP on your node host machine, this is different per hosting environment.
+
+Then you'll be able to connect to the Monero Node with changes to the Monero Node Dashboard environment variables.
+
+```
+MONERO_HOST=<monero node IP>
+MONERO_PORT=18081
+```
