@@ -8,21 +8,27 @@ services:
     volumes:
       - .:/app
     restart: unless-stopped
-    network_mode: service:node
+    ports:
+      - 3000:3000
+    networks:
+      monero_net:
+        ipv4_address: 172.16.0.3
   node:
     image: sethsimmons/simple-monerod
     restart: unless-stopped
     volumes:
       - monero-chain-data:/home/monero/.bitmonero
       - monero-wallet-data:/wallet
-    ports:
-      - 3000:3000
     command:
+      - --rpc-bind-ip=172.16.0.2
+      - --rpc-bind-port=18081
+      - --confirm-external-bind
       - --no-igd
       - --no-zmq
       - --enable-dns-blocklist
     networks:
-      - monero_net
+      monero_net:
+        ipv4_address: 172.16.0.2
 
 volumes:
   monero-chain-data:
@@ -30,4 +36,7 @@ volumes:
 
 networks:
   monero_net:
-    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/16

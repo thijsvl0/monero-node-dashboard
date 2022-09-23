@@ -28,11 +28,15 @@ services:
     image: brechtdoran/monero-node-dashboard:latest
     restart: unless-stopped
     environment:
-      - MONERO_HOST=localhost
+      - MONERO_HOST=172.16.0.2
       - MONERO_PORT=18081
-    network_mode: service:node
+    ports:
+      - 3000:3000
+    networks:
+      monero_net:
+        ipv4_address: 172.16.0.3
   node:
-    image: sethsimmons/simple-monerod:latest
+    image: sethsimmons/simple-monerod
     restart: unless-stopped
     volumes:
       - monero-chain-data:/home/monero/.bitmonero
@@ -40,15 +44,18 @@ services:
     ports:
       - 18080:18080
       - 18089:18089
-      - 3000:3000
     command:
+      - --rpc-bind-ip=172.16.0.2
+      - --rpc-bind-port=18081
+      - --confirm-external-bind
       - --rpc-restricted-bind-ip=0.0.0.0
       - --rpc-restricted-bind-port=18089
       - --no-igd
       - --no-zmq
       - --enable-dns-blocklist
     networks:
-      - monero_net
+      monero_net:
+        ipv4_address: 172.16.0.2
 
 volumes:
   monero-chain-data:
@@ -56,7 +63,10 @@ volumes:
 
 networks:
   monero_net:
-    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/16
 ```
 
 ### Already have a Monero Node?
